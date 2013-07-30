@@ -21,6 +21,9 @@ exports.after = 'You should now install project dependencies with _npm ' +
   '\n\n' +
   'http://gruntjs.com/getting-started';
 
+// Any existing file or directory matching this wildcard will cause a warning.
+exports.warnOn = '*';
+
 exports.template = function(grunt, init, done) {
   init.process({}, [
     init.prompt('name'),
