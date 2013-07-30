@@ -14,7 +14,12 @@ exports.description = 'Create a WordPress theme boilerplate.';
 exports.notes = '';
 
 // Template-specific notes to be displayed after question prompts.
-exports.after = '';
+exports.after = 'You should now install project dependencies with _npm ' +
+  'install_. After that, you may execute project tasks with _grunt_. For ' +
+  'more information about installing and configuring Grunt, please see ' +
+  'the Getting Started guide:' +
+  '\n\n' +
+  'http://gruntjs.com/getting-started';
 
 exports.template = function(grunt, init, done) {
   init.process({}, [
