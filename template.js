@@ -27,8 +27,11 @@ exports.warnOn = '*';
 exports.template = function(grunt, init, done) {
   init.process({}, [
     init.prompt('name'),
-    init.prompt('version'),
-    init.prompt('grunt_version')
+    init.prompt('homepage'),
+    init.prompt('author_name'),
+    init.prompt('author_url'),
+    init.prompt('description'),
+    init.prompt('version')
   ], function(err, props) {
     props.main = 'Gruntfile.js';
     props.devDependencies = {
@@ -38,10 +41,6 @@ exports.template = function(grunt, init, done) {
       "grunt-contrib-imagemin": "latest",
       "grunt-contrib-jshint": "latest",
       "grunt-contrib-uglify": "latest"
-    };
-
-    props.peerDependencies = {
-      'grunt': props.grunt_version,
     };
 
     // Files to copy (and process).

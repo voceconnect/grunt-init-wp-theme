@@ -1,0 +1,21 @@
+/*!
+Theme Name: {%= name %}
+Theme URI: {%= homepage %}
+Author: {%= author_name %}
+Author URI: {%= author_url %}
+Description: {%= description %}
+Version: {%= version %}
+License: GNU General Public License v2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+
+// To prepare an additional scss file to be imported, create the scss files in 
+// the Sass directory and make sure they begin with a trailing _ (e.g. _additional.scss).
+//
+// To add the actual import directive remove comment slashes in the lines below 
+// and add the names of the .scss file names (you do not need to include the 
+// scss extension) be sure to include a trailing underscore before the file name.
+// @import("_additional");
+// @import("_additional2");
+// @import("grid/_mygrid");
