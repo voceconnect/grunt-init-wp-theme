@@ -59,9 +59,18 @@ module.exports = function(grunt) {
             }
         }
     },
+    concat: {
+      options: {
+      separator: ';',
+      },
+      dist: {
+        src: ['js/*.js','!js/<%= pkg.name %>.min.js'],
+        dest: 'js/<%= pkg.name %>.min.js'
+      },
+    }
     build: {
         production:[ 'compass:production', 'jshint', 'uglify', 'imagemin'],
-        development:[ 'compass:development', 'jshint', 'uglify', 'imagemin']
+        development:[ 'compass:development', 'jshint', 'concat', 'imagemin']
         
     }
 
@@ -73,6 +82,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     
 
   grunt.registerTask('default', ['build:production']);

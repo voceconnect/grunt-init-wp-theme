@@ -40,7 +40,8 @@ exports.template = function(grunt, init, done) {
       "grunt-contrib-compass": "latest",
       "grunt-contrib-imagemin": "latest",
       "grunt-contrib-jshint": "latest",
-      "grunt-contrib-uglify": "latest"
+      "grunt-contrib-uglify": "latest",
+      "grunt-contrib-concat": "latest"
     };
 
     // Files to copy (and process).
