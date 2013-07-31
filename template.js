@@ -31,14 +31,13 @@ exports.template = function(grunt, init, done) {
     init.prompt('grunt_version')
   ], function(err, props) {
     props.main = 'Gruntfile.js';
-    props.keywords = ['gruntplugin'];
     props.devDependencies = {
-        "grunt-contrib-compass": "latest",
-        "grunt-contrib-csslint": "latest",
-        "grunt-contrib-cssmin": "latest",
-        "grunt-contrib-imagemin": "latest",
-        "grunt-contrib-jshint": "latest",
-        "grunt-contrib-uglify": "latest",
+      "grunt": "latest",
+      "grunt-build": "git://github.com/voceconnect/grunt-build.git#master",
+      "grunt-contrib-compass": "latest",
+      "grunt-contrib-imagemin": "latest",
+      "grunt-contrib-jshint": "latest",
+      "grunt-contrib-uglify": "latest"
     };
 
     props.peerDependencies = {
