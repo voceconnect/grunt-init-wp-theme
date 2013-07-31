@@ -1,4 +1,6 @@
 module.exports = function(grunt) {
+
+  // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
@@ -6,7 +8,7 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'js/*.js',
+        src: ['js/*.js','!js/<%= pkg.name %>.min.js'],
         dest: 'js/<%= pkg.name %>.min.js'
       }
     },
@@ -24,20 +26,56 @@ module.exports = function(grunt) {
     },
     jshint: {
         files: ['js/*.js'],
-        options: {
-          globals: {
-            jQuery: true,
-            console: true,
-            module: true
+        options : {
+        "curly" : true,
+        "eqeqeq" : true,
+        "eqnull" : true,
+        "browser" : true,
+        "plusplus" : true,
+        "unused" : true,
+        "trailing" : true,
+        "globals" : {
+          "jQuery" : true,
+          "$" : true,
+          "ajaxurl" : true
           }
         }
-    }
-  });
-    
-  grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
+    },
+    compass: {
+        options: {
+          sassDir: 'sass',
+          cssDir: ['.'],
+          force: true
 
-  grunt.registerTask('default', ['jshint', 'uglify', 'imagemin']);
+        },
+        production: {
+            options: {
+                environment: "production"
+            }
+        },
+        development: {
+            options: {
+                environment: "development"
+            }
+        }
+    },
+    build: {
+        production:[ 'compass:production', 'jshint', 'uglify', 'imagemin'],
+        development:[ 'compass:development', 'jshint', 'uglify', 'imagemin']
+        
+    }
+
+  });
+
+    grunt.loadNpmTasks('grunt-build');
+    grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    
+
+  grunt.registerTask('default', ['build:production']);
+
+
 };
